@@ -1,0 +1,27 @@
+{
+  "name": "angularjs-expressjs-sequelizejs-elasticsearch-demo",
+  "description": "",
+  "main": "client/app.js",
+  "authors": [
+    "Muhammad Kamran <smkamranqadri@yahoo.com>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "angularjs",
+    "expressjs",
+    "sequelizejs",
+    "elasticsearch"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.7.8",
+    "angular-ui-router": "^1.0.22"
+  }
+}
