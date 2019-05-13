@@ -7,6 +7,7 @@ if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 const database = require('./config/database');
 const middleware = require('./config/middleware');
 const utils = require('./config/utils');
+const routes = require('./routes');
 
 const app = express();
 const PORT = process.env.PORT;
@@ -18,6 +19,8 @@ middleware(app);
 app.get('/api', (req, res) => {
   utils.responseHandler.successHanlder(res, 'Hello World!');
 });
+
+app.use('/api', routes);
 
 try {
   // database connection
