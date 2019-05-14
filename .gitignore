@@ -10,6 +10,9 @@
 # production
 /public
 
+# elasticsearch data
+/esdata
+
 # misc
 .DS_Store
 .env
