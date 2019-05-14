@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <h1>Search Customers!</h1>
+    </div>
+  </div>
+  <div class="row">
+    <form ng-submit="vm.getCustomers(query)" class="search-form">
+      <div class="col-md-3 col-md-offset-3">
+        <div class="form-group has-feedback">
+          <label for="search" class="sr-only">Search</label>
+          <input
+            type="text"
+            class="form-control"
+            name="search"
+            id="search"
+            placeholder="search"
+            ng-model="query"
+          />
+          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="row" ng-if="error">
+    <div class="alert alert-danger" role="alert">
+      {{ error }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3" ng-repeat="result in vm.results">
+      <div class="panel panel-default">
+        <div class="panel-heading">Customer: {{ result.customerName }}</div>
+        <div class="panel-body">
+          <p>
+            Contact: {{ result.contactLastName }}, {{ result.contactFirstName }}
+          </p>
+          <p>Phone: {{ result.phone }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
