@@ -1,4 +1,7 @@
 'use strict';
+
+const { addDocument, removeDocument } = require('../config/elasticsearch');
+
 module.exports = (sequelize, DataTypes) => {
   const customers = sequelize.define(
     'customers',
@@ -22,5 +25,24 @@ module.exports = (sequelize, DataTypes) => {
   customers.associate = function(models) {
     // associations can be defined here
   };
+
+  const saveDocument = function(instance) {
+    const document = instance.dataValues;
+    return addDocument(document.id, 'customers', {
+      customerName: document.customerName,
+      contactLastName: document.contactLastName,
+      contactFirstName: document.contactFirstName,
+      phone: document.phone
+    });
+  };
+
+  const destroyDocument = async instance => {
+    return removeDocument(instance.id);
+  };
+
+  customers.addHook('afterCreate', saveDocument);
+  customers.addHook('afterUpdate', saveDocument);
+  customers.addHook('afterDestroy', destroyDocument);
+
   return customers;
 };

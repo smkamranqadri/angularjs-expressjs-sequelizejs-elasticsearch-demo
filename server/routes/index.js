@@ -1,11 +1,5 @@
 'use strict';
 
-const express = require('express');
+const customersRoutes = require('./customers');
 
-const controllers = require('../controllers');
-
-const router = express.Router();
-
-router.get('/customers', controllers.customers.getAll);
-
-module.exports = router;
+module.exports = [customersRoutes];
