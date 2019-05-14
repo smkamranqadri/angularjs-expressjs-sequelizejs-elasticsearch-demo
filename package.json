@@ -5,6 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js",
+    "seed": "node server/config/seed/index.js",
     "dev": "concurrently \"npm run gulp watch\" \"npm run nodemon server/index.js\"",
     "gulp": "gulp",
     "nodemon": "nodemon"
