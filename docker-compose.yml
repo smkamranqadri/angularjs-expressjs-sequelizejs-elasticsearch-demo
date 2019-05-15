@@ -20,3 +20,23 @@ services:
     container_name: kibana
     ports:
       - '5601:5601'
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=demodb
+  nodejs:
+    image: node:6
+    container_name: nodejs
+    depends_on:
+      - mysql
+      - elasticsearch
+    ports:
+      - '3333:3333'
+    volumes:
+      - .:/usr/src/service
+    working_dir: /usr/src/service
+    command: bash -c "npm install && npm run dev"
