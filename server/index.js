@@ -17,7 +17,7 @@ const PORT = process.env.PORT;
 middleware(app);
 
 // root route
-app.get('/api', (req, res) => {
+app.get('/api', function(req, res) {
   utils.responseHandler.successHanlder(res, 'Hello World!');
 });
 
@@ -39,7 +39,7 @@ try {
           .then(function() {
             console.log('Elasticsearch indexes synced!');
           })
-          .catch(err => {
+          .catch(function(err) {
             console.log('Error whlie setting up elastic search', err);
           });
       }

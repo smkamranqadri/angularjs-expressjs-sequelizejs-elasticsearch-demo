@@ -23,11 +23,13 @@ const list = function(req, res) {
       }
     };
   search('customers', body)
-    .then(results => {
-      const records = results.hits.hits.map(record => record._source);
+    .then(function(results) {
+      const records = results.hits.hits.map(function(record) {
+        return record._source;
+      });
       responseHandler.successHanlder(res, records);
     })
-    .catch(err => {
+    .catch(function(err) {
       responseHandler.serverErrorHanlder(res, err);
     });
 };

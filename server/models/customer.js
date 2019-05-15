@@ -2,7 +2,7 @@
 
 const { addDocument, removeDocument } = require('../config/elasticsearch');
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = function(sequelize, DataTypes) {
   const customers = sequelize.define(
     'customers',
     {
@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  const destroyDocument = async instance => {
+  const destroyDocument = function(instance) {
     return removeDocument(instance.id);
   };
 

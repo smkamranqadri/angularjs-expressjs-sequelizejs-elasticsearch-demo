@@ -23,7 +23,7 @@ try {
         console.log('Elasticsearch indexes synced!');
         seed();
       })
-      .catch(err => {
+      .catch(function(err) {
         console.log('Error whlie setting up elastic search', err);
       });
   });
